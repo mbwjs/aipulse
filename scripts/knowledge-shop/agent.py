@@ -268,38 +268,49 @@ def make_readme(data: dict, output_dir: Path, slug: str) -> Path:
     readme_path.write_text(textwrap.dedent(f"""\
     # {data['title']}
 
-    > 🤖 本知识站点由 [AI Pulse 知识商店](https://aipulse.lol) 自动生成
-    > 包含 {len(data['chapters'])} 章内容，每章含面试题和练习题
+    > 🤖 由 [AI Pulse 知识商店](https://aipulse.lol/product/) 自动生成
+    > {len(data['chapters'])} 章 · 面试题 · 练习题 · 答案全含
 
-    ## 快速部署
+    ## 🚀 一键部署（零门槛，不需要 GitHub）
 
-    ### 方式 1：GitHub Pages（免费）
-    1. Fork 本仓库
+    ### 方式 1：Vercel 一键部署（推荐，免费）
+    1. 打开 [vercel.com](https://vercel.com) → 用 GitHub/邮箱注册（1 分钟）
+    2. 安装 Vercel CLI：`npm i -g vercel`
+    3. 在本目录运行：`vercel --prod`
+    4. 获得 `xxx.vercel.app` 免费域名
+
+    ### 方式 2：拖拽部署到 Netlify（最简单）
+    1. 打开 [app.netlify.com](https://app.netlify.com)
+    2. 把 `public/` 文件夹**直接拖进去**
+    3. 获得 `xxx.netlify.app` 免费域名
+
+    ### 方式 3：GitHub Pages（需 GitHub 账号）
+    1. 创建 GitHub 仓库，推送本目录
     2. Settings → Pages → Source 选 GitHub Actions
     3. 访问 `https://你的用户名.github.io/{slug}/`
 
-    ### 方式 2：本地运行
-    ```bash
-    hugo server
-    ```
-
-    ### 方式 3：一键部署到 Vercel
-    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
     ## 自定义内容
-    编辑 `content/` 目录下的 Markdown 文件即可修改内容。
-    编辑 `hugo.yaml` 修改网站配置。
+    - 编辑 `content/` 下的 Markdown 文件修改内容
+    - 编辑 `hugo.yaml` 改网站标题和配置
+    - 编辑 `layouts/` 下的 HTML 改界面样式
 
-    ## 升级到付费版
-    联系 [aipulse.lol](https://aipulse.lol) 获取：
-    - 自动内容生成 Agent（每天自动产出新题目）
-    - 付费墙系统
-    - 用户管理后台
-    - 策略市场接入
+    ## 🔒 启用付费墙（即将上线）
+    联系 [aipulse.lol/product/](https://aipulse.lol/product/) 升级到付费版，自动获得：
+    - 真实支付集成（Stripe/支付宝）
+    - 用户注册登录
+    - 内容自动更新 Agent
+    - 策略市场分销
 
     ---
     *由 AI Pulse 知识商店 Agent 生成 · {datetime.now().strftime("%Y-%m-%d")}*
     """))
+
+    # Vercel 配置
+    (output_dir / "vercel.json").write_text('{"buildCommand":"hugo --minify","outputDirectory":"public"}\n')
+    # Netlify 配置
+    (output_dir / "netlify.toml").write_text('[build]\n  command = "hugo --minify"\n  publish = "public"\n')
+    # .gitignore
+    (output_dir / ".gitignore").write_text("public/\n.hugo_build.lock\n")
 
     if not (output_dir / ".github" / "workflows").exists():
         (output_dir / ".github" / "workflows").mkdir(parents=True)
