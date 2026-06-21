@@ -1,5 +1,6 @@
 ---
 title: "从零到上线：一台 VPS 搭建个人技术博客全记录"
+slug: "from-zero-to-blog"
 date: 2026-06-22
 description: "用 AlmaLinux + Hugo + Nginx 在 $5/月的 VPS 上搭建一个带 HTTPS、自动部署、SEO 优化的技术博客。全过程记录，含安全加固和域名配置。"
 aliases:
