@@ -1,0 +1,95 @@
+#!/bin/bash
+# ============================================
+#  密钥扫描 pre-commit hook
+#  检测 API key、私钥、密码等敏感信息
+#  匹配即阻止提交
+# ============================================
+
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+# 高置信度敏感模式（仅匹配几乎肯定是密钥的内容）
+PATTERNS=(
+  # OpenAI / Claude / DeepSeek API key: sk-xxx
+  "sk-[A-Za-z0-9]{20,}"
+  # GitHub personal access token
+  "gh[pousr]_[A-Za-z0-9]{36,}"
+  # AWS access key
+  "AKIA[0-9A-Z]{16}"
+  # 私钥头
+  "BEGIN (RSA|EC|DSA|OPENSSH) PRIVATE KEY"
+  # .env 文件（整个文件都是敏感信息）
+  "[.]env$"
+  # 明确密码赋值（等号/冒号后跟非空值，排除注释和占位符）
+  "(password|passwd|secret)[[:space:]]*[=:][[:space:]]*['\"][^'\"]+['\"]"
+)
+
+# 白名单：允许出现敏感词但实际无害的文件/模式
+WHITELIST=(
+  "deploy.example.sh"
+  ".githooks/pre-commit"
+  "archetypes/"
+  "layouts/"
+)
+
+FOUND=0
+
+echo "🔍 扫描敏感信息..."
+
+for file in $STAGED; do
+  # 跳过删除的文件
+  if [ ! -f "$file" ]; then
+    continue
+  fi
+
+  # 检查白名单
+  skip=0
+  for w in "${WHITELIST[@]}"; do
+    if [[ "$file" == *"$w"* ]]; then
+      skip=1
+      break
+    fi
+  done
+  if [ $skip -eq 1 ]; then
+    continue
+  fi
+
+  # 只扫描文本文件
+  if ! file "$file" | grep -q 'text'; then
+    continue
+  fi
+
+  while IFS= read -r line; do
+    for pattern in "${PATTERNS[@]}"; do
+      if echo "$line" | grep -qE "$pattern" 2>/dev/null; then
+        FOUND=1
+        echo -e "  ${RED}✗${NC} $file: ${line:0:80}"
+        break
+      fi
+    done
+  done < "$file"
+done
+
+if [ $FOUND -eq 1 ]; then
+  echo ""
+  echo -e "${RED}=============================================="
+  echo -e "  ⛔ 提交被阻止：检测到疑似密钥/敏感信息"
+  echo -e "==============================================${NC}"
+  echo ""
+  echo "如确认安全，跳过检查："
+  echo "  git commit --no-verify -m '...'"
+  exit 1
+fi
+
+echo -e "  ${GREEN}✅ 密钥检查通过${NC}"
+exit 0
