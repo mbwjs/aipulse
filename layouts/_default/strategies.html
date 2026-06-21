@@ -1,0 +1,95 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>策略市场</h1>
+  <p class="hero-subtitle">AI 内容生成策略：买一个，填 API Key，自动运营技术博客</p>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; padding-bottom: 60px;">
+  <div class="strategy-card" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);">
+    <div style="font-size: 2rem; margin-bottom: 8px;">🔬</div>
+    <h3 style="margin-bottom: 8px;">AI 技术深度文章</h3>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">面向工程师的深度技术分析，含代码示例和架构拆解。风格类似 Jay Alammar。</p>
+    <div style="background: var(--code-bg); border-radius: 8px; padding: 12px; font-size: 0.82rem; margin-bottom: 16px; border: 1px solid var(--border);">
+      <p style="margin: 0; color: var(--text-muted);">📝 输出示例："MCP 协议：AI Agent 的通用电源插座"</p>
+      <p style="margin: 4px 0 0; color: var(--text-muted);">📏 约 2000 字 · 含代码示例</p>
+      <p style="margin: 4px 0 0; color: var(--text-muted);">⚡ 生成速度 ~30 秒</p>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between;">
+      <strong style="font-size: 1.3rem;">¥29</strong>
+      <a href="https://github.com/mbwjs/mbwjs/issues/new?title=购买策略：AI技术深度文章" target="_blank" style="display: inline-block; padding: 8px 20px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">获取策略</a>
+    </div>
+  </div>
+
+  <div class="strategy-card" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);">
+    <div style="font-size: 2rem; margin-bottom: 8px;">⚡</div>
+    <h3 style="margin-bottom: 8px;">AI 快讯短评</h3>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">300-500 字短评，尖锐有观点。适合周刊、Newsletter 形式的 AI 资讯站。</p>
+    <div style="background: var(--code-bg); border-radius: 8px; padding: 12px; font-size: 0.82rem; margin-bottom: 16px; border: 1px solid var(--border);">
+      <p style="margin: 0; color: var(--text-muted);">📝 输出示例："GPT-5 推理成本下降 80%：意味着什么"</p>
+      <p style="margin: 4px 0 0; color: var(--text-muted);">📏 约 400 字 · 观点驱动</p>
+      <p style="margin: 4px 0 0; color: var(--text-muted);">⚡ 生成速度 ~15 秒</p>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between;">
+      <strong style="font-size: 1.3rem;">¥19</strong>
+      <a href="https://github.com/mbwjs/mbwjs/issues/new?title=购买策略：AI快讯短评" target="_blank" style="display: inline-block; padding: 8px 20px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">获取策略</a>
+    </div>
+  </div>
+
+  <div class="strategy-card" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); opacity: 0.5;">
+    <div style="font-size: 2rem; margin-bottom: 8px;">🎨</div>
+    <h3 style="margin-bottom: 8px;">你的自定义策略</h3>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">买了上面任一策略后，修改 prompt 获得更好效果，提交审核后上架到这里，售出拿 30% 分成。</p>
+    <div style="background: var(--code-bg); border-radius: 8px; padding: 12px; font-size: 0.82rem; margin-bottom: 16px; border: 1px solid var(--border);">
+      <p style="margin: 0; color: var(--text-muted);">🔜 即将开放策略提交</p>
+    </div>
+    <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between;">
+      <strong style="font-size: 1.3rem;">—</strong>
+      <span style="color: var(--text-muted); font-size: 0.85rem;">敬请期待</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom: 60px;">
+  <h2 style="font-size: 1.3rem; margin-bottom: 16px;">策略包含什么</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+    <div style="padding: 16px; background: var(--surface); border-radius: var(--radius); border:1px solid var(--border);">
+      <span style="font-size: 1.2rem;">📋</span>
+      <p style="font-weight:600;margin:8px 0 4px;">Prompt 模板</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);">system + user prompt 配置</p>
+    </div>
+    <div style="padding: 16px; background: var(--surface); border-radius: var(--radius); border:1px solid var(--border);">
+      <span style="font-size: 1.2rem;">🚀</span>
+      <p style="font-weight:600;margin:8px 0 4px;">一键部署</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);">自动推送到 GitHub Pages</p>
+    </div>
+    <div style="padding: 16px; background: var(--surface); border-radius: var(--radius); border:1px solid var(--border);">
+      <span style="font-size: 1.2rem;">🔄</span>
+      <p style="font-weight:600;margin:8px 0 4px;">可定制可转卖</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);">改 prompt 后上架拿分成</p>
+    </div>
+    <div style="padding: 16px; background: var(--surface); border-radius: var(--radius); border:1px solid var(--border);">
+      <span style="font-size: 1.2rem;">📊</span>
+      <p style="font-weight:600;margin:8px 0 4px;">策略源码</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Python 脚本 + Hugo 配置</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom: 80px; text-align: center;">
+  <h2 style="font-size: 1.3rem; margin-bottom: 12px;">FAQ</h2>
+  <details style="text-align: left; max-width: 600px; margin: 0 auto 12px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);">
+    <summary style="cursor: pointer; font-weight: 600;">买了策略后怎么部署？</summary>
+    <p style="margin-top: 8px; color: var(--text-muted); font-size:0.9rem;">你会收到一个 GitHub 仓库链接，fork 后填上你的 DeepSeek API Key，GitHub Actions 自动部署到 <code>你的用户名.github.io</code>。不需要服务器，不需要懂代码。</p>
+  </details>
+  <details style="text-align: left; max-width: 600px; margin: 0 auto 12px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);">
+    <summary style="cursor: pointer; font-weight: 600;">我可以改策略内容吗？</summary>
+    <p style="margin-top: 8px; color: var(--text-muted); font-size:0.9rem;">完全可以。买了策略，源码就是你的。改 prompt、改模板、改部署方式都可以。如果你改的策略卖出去了，你拿 30% 分成。</p>
+  </details>
+  <details style="text-align: left; max-width: 600px; margin: 0 auto 12px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);">
+    <summary style="cursor: pointer; font-weight: 600;">和直接买文章有什么区别？</summary>
+    <p style="margin-top: 8px; color: var(--text-muted); font-size:0.9rem;">买文章 = 买一条鱼。买策略 = 买一根鱼竿 + 钓鱼手册。策略让你无限生成新内容，不会和别人撞车。</p>
+  </details>
+</section>
+
+{{ .Content }}
+{{ end }}
