@@ -3,8 +3,8 @@
   <h1 style="font-size: 3rem; margin-bottom: 8px;">404</h1>
   <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 32px;">这个页面不存在</p>
   <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-    <a href="/" style="display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600;">← 返回首页</a>
-    <a href="/posts/" style="display: inline-block; padding: 10px 24px; border: 1px solid var(--border); color: var(--text); border-radius: 8px; text-decoration: none;">浏览文章</a>
+    <a href="{{ "/" | relURL }}" style="display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600;">← 返回首页</a>
+    <a href="{{ "/posts/" | relURL }}" style="display: inline-block; padding: 10px 24px; border: 1px solid var(--border); color: var(--text); border-radius: 8px; text-decoration: none;">浏览文章</a>
   </div>
 </div>
 {{ end }}
