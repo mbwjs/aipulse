@@ -13,8 +13,23 @@
   --max-w: 760px;
 }
 
+/* 用户手动切换暗色 */
+[data-theme="dark"] {
+  --bg: #0f0f19;
+  --surface: #1a1a2e;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #818cf8;
+  --accent-hover: #6366f1;
+  --border: #2d2d44;
+  --code-bg: #1e1e32;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* 跟随系统暗色（无手动设置时） */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --bg: #0f0f19;
     --surface: #1a1a2e;
     --text: #e2e8f0;
@@ -159,6 +174,13 @@ nav { display: flex; gap: 20px; }
 .site-footer p { color: var(--text-muted); margin-bottom: 6px; font-size: 0.9rem; }
 .site-footer strong { color: var(--text); }
 .footer-muted { font-size: 0.8rem !important; opacity: 0.6; }
+
+.theme-btn {
+  background: none; border: 1px solid var(--border); border-radius: 8px;
+  padding: 4px 10px; font-size: 1rem; cursor: pointer; line-height: 1;
+  transition: background 0.2s;
+}
+.theme-btn:hover { background: var(--code-bg); }
 
 @media (max-width: 600px) {
   .hero h1 { font-size: 1.6rem; }
