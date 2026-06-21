@@ -1,0 +1,119 @@
+{{ define "main" }}
+<section class="hero">
+  <h1>AI 知识商店</h1>
+  <p class="hero-subtitle">说一句话，3 分钟获得一个完整的知识付费网站<br>自动生成内容 · 自动部署 · 内置付费墙 · 可转卖</p>
+</section>
+
+<!-- Demo 截图区 -->
+<section style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 48px; text-align: center;">
+  <div style="font-size: 4rem; margin-bottom: 8px;">🏪</div>
+  <h2 style="font-size: 1.3rem; margin-bottom: 8px;">输入 → AI 生成 → 一键部署</h2>
+  <p style="color: var(--text-muted); font-size: 0.9rem;">
+    不需要写代码、不需要服务器、不需要雇编辑团队
+  </p>
+
+  <!-- 模拟终端 -->
+  <div style="background: #0d1117; border-radius: 12px; padding: 20px; max-width: 500px; margin: 24px auto 0; text-align: left; font-family: 'SF Mono', monospace; font-size: 0.85rem; color: #c9d1d9;">
+    <div style="color: #58a6ff;">$ python3 agent.py "Java 面试题库"</div>
+    <div style="color: #8b949e; margin-top: 8px;">🧠 AI 生成中...</div>
+    <div style="color: #3fb950; margin-top: 4px;">✅ 第 1 章: Java 并发基础（线程与锁）</div>
+    <div style="color: #3fb950;">✅ 第 2 章: JVM 内存模型与垃圾回收</div>
+    <div style="color: #3fb950;">✅ 第 3 章: Spring Boot 核心原理</div>
+    <div style="color: #58a6ff; margin-top: 8px;">🏗️ Hugo 站点构建完成</div>
+    <div style="color: #58a6ff;">🚀 部署到 GitHub Pages</div>
+    <div style="color: #3fb950; margin-top: 8px;">🎉 上线: https://xxx.github.io/java-interview/</div>
+  </div>
+</section>
+
+<!-- 买什么 -->
+<section style="margin-bottom: 48px;">
+  <h2 style="font-size: 1.3rem; margin-bottom: 16px;">付费后你得到什么</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;">
+      <span style="font-size: 1.5rem;">🤖</span>
+      <h4 style="margin: 8px 0 4px;">知识生成 Agent</h4>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">输入主题 → 自动输出章节+面试题+练习题。内容可手动修改。</p>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;">
+      <span style="font-size: 1.5rem;">🎨</span>
+      <h4 style="margin: 8px 0 4px;">Hugo 网站源码</h4>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">完整源码交付，你想怎么改就怎么改。独立域名、独立品牌。</p>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;">
+      <span style="font-size: 1.5rem;">🚀</span>
+      <h4 style="margin: 8px 0 4px;">一键自动部署</h4>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">GitHub Actions 自动推送到 GitHub Pages。零服务器费。</p>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;">
+      <span style="font-size: 1.5rem;">💰</span>
+      <h4 style="margin: 8px 0 4px;">内置付费墙</h4>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">内容阅览免费，答案解析付费。你的站点 = 你的收入。</p>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;">
+      <span style="font-size: 1.5rem;">🔄</span>
+      <h4 style="margin: 8px 0 4px;">转售权</h4>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">把整个项目（Agent+源码）打包转卖给其他人。你做上游。</p>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px;">
+      <span style="font-size: 1.5rem;">📊</span>
+      <h4 style="margin: 8px 0 4px;">策略市场</h4>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">挂到 aipulse 策略市场，你的产品被更多人发现。卖出去的每份你拿分成。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 效果展示 -->
+<section style="margin-bottom: 48px;">
+  <h2 style="font-size: 1.3rem; margin-bottom: 16px;">实际效果</h2>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;">
+    <p style="margin-bottom: 12px;">以下是 Agent 用 <code>"Java 并发编程面试"</code> 这个主题生成的真实内容片段：</p>
+    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-size: 0.9rem;">
+      <h4 style="margin: 0 0 8px;">第 1 章 Java 并发基础：线程与锁</h4>
+      <p style="color: var(--text-muted); margin-bottom: 12px;">本章介绍 Java 并发编程的基础概念，包括线程的创建与生命周期、synchronized 关键字、volatile 关键字以及锁机制...</p>
+      <p style="font-weight: 600; margin-bottom: 4px;">核心知识点：</p>
+      <ul style="padding-left: 20px; margin-bottom: 12px;">
+        <li>线程的创建与生命周期</li>
+        <li>synchronized 与 volatile 的语义</li>
+        <li>锁机制与死锁预防</li>
+      </ul>
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px; margin-bottom: 8px;">
+        <strong>Q1: synchronized 和 volatile 的区别是什么？</strong>
+        <p style="color: var(--accent); margin-top: 4px;">💡 synchronized 保证原子性和可见性，volatile 只保证可见性和有序性...</p>
+      </div>
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px;">
+        <strong>📝 练习题（单选）：以下哪个关键字可以保证可见性但不保证原子性？</strong>
+        <p style="margin-top: 4px;">A. synchronized &nbsp; B. volatile ✓ &nbsp; C. final &nbsp; D. static</p>
+        <p style="color: var(--accent); font-size: 0.85rem; margin-top: 4px; cursor: pointer;">点击查看答案 → B. volatile</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 价格 -->
+<section style="text-align: center; margin-bottom: 48px; padding: 40px; background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius);">
+  <h2 style="font-size: 1.5rem; margin-bottom: 8px;">🚀 早鸟价</h2>
+  <div style="font-size: 3rem; font-weight: 800; color: var(--accent);">¥99</div>
+  <p style="color: var(--text-muted); margin-bottom: 24px;">含源码 + Agent + 部署方案 + 转售权 + 策略市场</p>
+  <a href="https://github.com/mbwjs/mbwjs/issues/new?title=购买 AI 知识商店" target="_blank" style="display: inline-block; padding: 14px 48px; background: var(--accent); color: #fff; border-radius: 12px; text-decoration: none; font-size: 1.1rem; font-weight: 700;">立即购买</a>
+  <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 12px;">当前为 MVP 阶段，通过 GitHub Issue 下单，人工交付</p>
+</section>
+
+{{ .Content }}
+
+<!-- FAQ -->
+<section style="padding-bottom: 80px; text-align: center;">
+  <h2 style="font-size: 1.3rem; margin-bottom: 12px;">FAQ</h2>
+  <details style="text-align: left; max-width: 600px; margin: 0 auto 12px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);">
+    <summary style="cursor: pointer; font-weight: 600;">我需要有服务器吗？</summary>
+    <p style="margin-top: 8px; color: var(--text-muted); font-size:0.9rem;">不需要。站点部署在 GitHub Pages（免费），你只需要一个 GitHub 账号。</p>
+  </details>
+  <details style="text-align: left; max-width: 600px; margin: 0 auto 12px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);">
+    <summary style="cursor: pointer; font-weight: 600;">内容质量怎么样？真实可用吗？</summary>
+    <p style="margin-top: 8px; color: var(--text-muted); font-size:0.9rem;">AI 生成的内容可作为初稿。建议人工审核和润色后再发布。随着你使用越久，积累的面经和题目越多，质量越高。</p>
+  </details>
+  <details style="text-align: left; max-width: 600px; margin: 0 auto 12px; padding: 12px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border);">
+    <summary style="cursor: pointer; font-weight: 600;">我可以自己定价卖吗？</summary>
+    <p style="margin-top: 8px; color: var(--text-muted); font-size:0.9rem;">可以。源码属于你，站点属于你，定价完全由你决定。你也可以把自己的版本打包转卖给其他人。</p>
+  </details>
+</section>
+{{ end }}
