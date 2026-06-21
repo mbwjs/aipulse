@@ -1,64 +1,90 @@
-# AI Pulse
+# AI Pulse — AI Agent 驱动的知识商店平台
 
-⚡ AI 技术追踪博客 — 深度技术文章，聚焦 AI Agent、LLM 工程实践与前沿架构。
+> 说一句话 → AI 自动生成知识付费网站 → 一键部署上线
 
-**站点：** [https://aipulse.lol](https://aipulse.lol)
+## 这是什么
+
+一个 AI Agent 项目。输入主题（如"Java 面试题库"），Agent 自动：
+
+- 生成结构化知识内容（章节 + 面试题 + 练习题 + 答案解析）
+- 搭建 Hugo 静态网站（含付费墙）
+- 一键部署到 Vercel / Netlify / GitHub Pages（全免费）
+
+**买家什么代码都不用写，注册个 Vercel 账号就行。**
+
+## 产品页
+
+👉 **[aipulse.lol/product/](https://aipulse.lol/product/)**
 
 ## 技术栈
 
-- **静态生成**：Hugo 0.163
-- **服务器**：AlmaLinux 9.7 + Nginx
-- **HTTPS**：Let's Encrypt 自动续期
-- **分析**：Google Search Console
+| 层 | 技术 |
+|------|------|
+| AI Agent | Python 3 + DeepSeek API（JSON mode） |
+| Prompt 系统 | Strategy YAML 配置 + Structured Output |
+| 静态站点 | Hugo 0.163 (Go) |
+| 部署 | Vercel / Netlify / GitHub Pages |
+| 博客前端 | HTML + CSS（暗色模式 + 响应式） |
+| 安全 | fail2ban + SSH 密钥 + Let's Encrypt |
 
-## 初始化
+## 项目文档
+
+| 文档 | 内容 |
+|------|------|
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 系统架构图 + 技术决策 |
+| [INTERVIEW.md](INTERVIEW.md) | 面试高频 Q&A（防问倒） |
+
+## 快速开始
 
 ```bash
 git clone git@github.com:mbwjs/aipulse.git
 cd aipulse
-cp deploy.example.sh deploy.sh   # 编辑 DEPLOY_TARGET
+cp deploy.example.sh deploy.sh   # 编辑部署目标
 git config core.hooksPath .githooks   # 启用密钥扫描 hook
 ```
 
-之后每次 `git commit` 自动扫描密钥，`deploy.sh` 也会在部署时自动配置 hook（换机器不怕忘）。
+### 写博客
+
+```bash
+hugo new posts/my-post.md
+hugo server -D   # 预览
+./deploy.sh      # 发布
+```
+
+### 生成知识商店
+
+```bash
+# 需要 DEEPSEEK_API_KEY 环境变量
+python3 scripts/knowledge-shop/agent.py "Java 面试题库" --chapters 5
+# 输出: /tmp/knowledge-mvp/java面试题库/
+# 把 public/ 拖到 netlify.com 即可上线
+```
+
+### 生成博客文章
+
+```bash
+python3 scripts/generate.py "MCP 协议深度解析" --deploy
+# 自动保存为 Hugo post + 部署上线
+```
 
 ## 目录结构
 
 ```
-aipulse-hugo/
-├── content/          # Markdown 文章
-│   ├── _index.md     # 首页
-│   └── posts/        # 文章目录
-├── layouts/          # Hugo 模板
-│   ├── _default/     # 通用模板（列表、单页）
-│   ├── partials/     # 头部、底部
-│   └── 404.html      # 404 页面
-├── static/css/       # 样式
-├── .githooks/            # Git hooks（密钥扫描）
-├── hugo.yaml             # Hugo 配置
-├── deploy.example.sh     # 部署脚本模板
-└── deploy.sh             # 你的部署脚本（不入库）
+aipulse/
+├── content/                  # 博客文章（Markdown）
+│   ├── posts/                # 技术文章
+│   ├── product/              # 产品落地页
+│   └── strategies/           # 策略市场
+├── layouts/                  # Hugo 模板
+├── static/                   # CSS / JS
+├── scripts/
+│   ├── generate.py           # 博客文章生成 Agent
+│   ├── strategy.yaml         # 策略配置
+│   └── knowledge-shop/
+│       └── agent.py           # 知识商店生成 Agent（389 行）
+├── .githooks/                # pre-commit 密钥扫描
+├── .github/workflows/        # GitHub Pages 自动部署
+├── ARCHITECTURE.md           # 架构文档
+├── INTERVIEW.md              # 面试说辞
+└── hugo.yaml                 # Hugo 配置
 ```
-
-## 写作流程
-
-```bash
-# 1. 新建文章
-hugo new posts/my-post.md
-
-# 2. 编辑 content/posts/my-post.md
-
-# 3. 本地预览
-hugo server -D
-
-# 4. 发布
-./deploy.sh
-```
-
-## 部署
-
-1. 复制模板：`cp deploy.example.sh deploy.sh`
-2. 修改 `deploy.sh` 里的 `DEPLOY_TARGET` 为你自己的服务器地址
-3. `chmod +x deploy.sh && ./deploy.sh`
-
-脚本通过 Hugo 构建 + rsync 推送到服务器。`deploy.sh` 已加入 `.gitignore`，不会入库。
