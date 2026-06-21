@@ -44,4 +44,4 @@ hugo server -D
 
 ## 部署
 
-`deploy.sh` 自动构建并通过 rsync 推送到 `104.194.92.198:/var/www/aitracker/`。
+`deploy.sh` 自动构建并通过 rsync 推送到服务器。
