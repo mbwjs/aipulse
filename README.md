@@ -11,6 +11,17 @@
 - **HTTPS**：Let's Encrypt 自动续期
 - **分析**：Google Search Console
 
+## 初始化
+
+```bash
+git clone git@github.com:mbwjs/aipulse.git
+cd aipulse
+cp deploy.example.sh deploy.sh   # 编辑 DEPLOY_TARGET
+git config core.hooksPath .githooks   # 启用密钥扫描 hook
+```
+
+之后每次 `git commit` 自动扫描密钥，`deploy.sh` 也会在部署时自动配置 hook（换机器不怕忘）。
+
 ## 目录结构
 
 ```
@@ -23,6 +34,7 @@ aipulse-hugo/
 │   ├── partials/     # 头部、底部
 │   └── 404.html      # 404 页面
 ├── static/css/       # 样式
+├── .githooks/            # Git hooks（密钥扫描）
 ├── hugo.yaml             # Hugo 配置
 ├── deploy.example.sh     # 部署脚本模板
 └── deploy.sh             # 你的部署脚本（不入库）

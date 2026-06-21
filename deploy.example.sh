@@ -13,6 +13,9 @@
 
 set -e
 
+# 确保密钥扫描 hook 生效
+git config core.hooksPath .githooks
+
 # 修改为你的服务器地址（user@host:/path/to/www/）
 DEPLOY_TARGET="root@your-server:/var/www/your-site/"
 
