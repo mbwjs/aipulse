@@ -1,0 +1,35 @@
+# 内容生成策略配置
+# 每个策略定义一套 prompt 模板，决定生成什么风格的文章
+
+strategies:
+  tech-deep-dive:
+    name: "AI 技术深度文章"
+    description: "面向工程师的技术深度分析，含代码示例和架构拆解"
+    system_prompt: |
+      你是一位资深 AI 技术作家，拥有 10 年的软件工程和 AI 研究经验。
+      你的文章风格类似 Jay Alammar：用通俗的类比解释复杂概念，配合代码示例。
+      每篇文章包含：问题背景 → 核心原理 → 代码演示 → 工程实践 → 总结。
+      代码示例必须可运行，用 Python 或 JavaScript。
+    user_prompt_template: |
+      写一篇关于 "{topic}" 的深度技术文章，约 2000 字。
+
+      要求：
+      1. 标题用中文，简洁有力
+      2. 开头用一个吸引人的 TL;DR 摘要
+      3. 至少包含 3 个可运行的代码示例
+      4. 每个概念用类比解释（比如"就像..."）
+      5. 结尾给出实践建议或资源链接
+      6. 用 Markdown 格式输出，不要用 HTML
+
+  quick-insight:
+    name: "AI 快讯短评"
+    description: "300-500 字的短评，适合周刊形式"
+    system_prompt: |
+      你是一位敏锐的 AI 行业观察者，擅长用精炼的语言抓住新闻的核心要点。
+      风格：尖锐、有观点、不废话。
+    user_prompt_template: |
+      写一篇关于 "{topic}" 的短评，300-500 字。
+      包含：发生了什么 → 为什么重要 → 我的观点。
+      用 Markdown 格式。
+
+default_strategy: tech-deep-dive
