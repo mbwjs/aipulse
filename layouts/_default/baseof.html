@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
-  <script>
-    (function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else if(t===null&&window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')})()
-  </script>
+  <script src="/js/theme.js"></script>
   <link rel="stylesheet" href="/css/style.css">
   <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta name="author" content="{{ .Site.Params.author }}">
@@ -42,15 +40,5 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
-<script>
-(function(){
-  var btn = document.getElementById('theme-toggle');
-  var html = document.documentElement;
-  function setTheme(t) { if(t==='dark')html.setAttribute('data-theme','dark');else html.removeAttribute('data-theme'); localStorage.setItem('theme',t); }
-  btn.addEventListener('click', function(){
-    setTheme(html.hasAttribute('data-theme') ? 'light' : 'dark');
-  });
-})();
-</script>
 </body>
 </html>
