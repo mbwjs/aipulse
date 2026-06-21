@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ if .IsHome }}
+<section class="hero">
+  <h1>追踪 AI 最新进展</h1>
+  <p class="hero-subtitle">深度技术文章，聚焦 AI Agent、LLM 工程实践与前沿架构。</p>
+</section>
+{{ else }}
+<a href="/" class="back-link">← 返回首页</a>
+<h1 style="font-size: 1.5rem; margin-bottom: 24px;">所有文章</h1>
+{{ end }}
+
+<section class="articles">
+  {{ range .Paginator.Pages }}
+  <article class="article-card{{ if .Params.featured }} featured{{ end }}">
+    <div class="article-meta">
+      <span class="article-tag">{{ .Section }}</span>
+      <span class="article-date">{{ .Date.Format "2006-01-02" }}</span>
+    </div>
+    <h2 class="article-title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+    <p class="article-excerpt">{{ .Description }}</p>
+    <div class="article-footer">
+      <span class="article-author">{{ .Site.Params.author }}</span>
+      <a href="{{ .RelPermalink }}" class="read-more">阅读全文 →</a>
+    </div>
+  </article>
+  {{ end }}
+
+  {{ if gt .Paginator.TotalPages 1 }}
+  <nav style="text-align: center; margin-top: 32px;">
+    {{ if .Paginator.HasPrev }}<a href="{{ .Paginator.Prev.URL }}" style="margin-right: 16px;">← 上一页</a>{{ end }}
+    {{ if .Paginator.HasNext }}<a href="{{ .Paginator.Next.URL }}">下一页 →</a>{{ end }}
+  </nav>
+  {{ end }}
+</section>
+{{ end }}

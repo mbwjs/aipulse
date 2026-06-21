@@ -1,0 +1,28 @@
+baseURL: "https://aipulse.lol/"
+locale: "zh-CN"
+title: "AI Pulse"
+
+params:
+  author: "Bowen Ma"
+  description: "追踪 AI 最新进展，聚焦 AI Agent 工程实践、LLM 系统设计、Multi-Agent 编排等前沿技术。"
+
+permalinks:
+  posts: "/posts/:slug/"
+
+paginate: 10
+
+disableKinds:
+  - taxonomy
+  - term
+
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+    - RSS
