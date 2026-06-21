@@ -19,6 +19,9 @@ sitemap:
   changefreq: weekly
   priority: 0.5
 
+minify:
+  disableJS: true
+
 outputs:
   home:
     - HTML
