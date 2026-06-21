@@ -20,7 +20,7 @@ git config core.hooksPath .githooks
 DEPLOY_TARGET="root@your-server:/var/www/your-site/"
 
 echo "Building Hugo site..."
-hugo --minify --buildFuture
+hugo --buildFuture
 
 echo "Deploying to ${DEPLOY_TARGET}..."
 rsync -avz --delete public/ "${DEPLOY_TARGET}"
