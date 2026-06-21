@@ -23,8 +23,9 @@ aipulse-hugo/
 │   ├── partials/     # 头部、底部
 │   └── 404.html      # 404 页面
 ├── static/css/       # 样式
-├── hugo.yaml         # Hugo 配置
-└── deploy.sh         # 部署脚本
+├── hugo.yaml             # Hugo 配置
+├── deploy.example.sh     # 部署脚本模板
+└── deploy.sh             # 你的部署脚本（不入库）
 ```
 
 ## 写作流程
@@ -44,4 +45,8 @@ hugo server -D
 
 ## 部署
 
-`deploy.sh` 自动构建并通过 rsync 推送到服务器。
+1. 复制模板：`cp deploy.example.sh deploy.sh`
+2. 修改 `deploy.sh` 里的 `DEPLOY_TARGET` 为你自己的服务器地址
+3. `chmod +x deploy.sh && ./deploy.sh`
+
+脚本通过 Hugo 构建 + rsync 推送到服务器。`deploy.sh` 已加入 `.gitignore`，不会入库。
